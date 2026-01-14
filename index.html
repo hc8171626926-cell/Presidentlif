@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0d" />
+  <title>PresidentLife 🇮🇳</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <div class="h1">PresidentLife 🇮🇳</div>
+      <div class="sub">BitLife-style + President/War simulator</div>
+    </div>
+    <div class="right">
+      <button id="btnSave" class="ghost">Save</button>
+      <button id="btnReset" class="ghost danger">Reset</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label class="label">Name</label>
+        <input id="name" class="input" placeholder="Your name" />
+      </div>
+
+      <div class="grid2">
+        <div class="statline"><span>Age</span><strong id="age"></strong></div>
+        <div class="statline"><span>Role</span><strong id="role"></strong></div>
+        <div class="statline"><span>Money</span><strong id="money"></strong></div>
+        <div class="statline"><span>Job</span><strong id="job"></strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="cardTitle">Stats</div>
+
+      <div class="bars">
+        <div class="bar">
+          <div class="barTop"><span>Health</span><strong id="healthV"></strong></div>
+          <div class="meter"><div id="healthB" class="fill"></div></div>
+        </div>
+        <div class="bar">
+          <div class="barTop"><span>Happiness</span><strong id="happyV"></strong></div>
+          <div class="meter"><div id="happyB" class="fill"></div></div>
+        </div>
+        <div class="bar">
+          <div class="barTop"><span>Smarts</span><strong id="smartV"></strong></div>
+          <div class="meter"><div id="smartB" class="fill"></div></div>
+        </div>
+        <div class="bar">
+          <div class="barTop"><span>Looks</span><strong id="looksV"></strong></div>
+          <div class="meter"><div id="looksB" class="fill"></div></div>
+        </div>
+        <div class="bar">
+          <div class="barTop"><span>Popularity</span><strong id="popV"></strong></div>
+          <div class="meter"><div id="popB" class="fill"></div></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="bar">
+          <div class="barTop"><span>Public Support</span><strong id="supportV"></strong></div>
+          <div class="meter"><div id="supportB" class="fill"></div></div>
+        </div>
+        <div class="bar">
+          <div class="barTop"><span>Corruption</span><strong id="corrV"></strong></div>
+          <div class="meter"><div id="corrB" class="fill bad"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="cardTitle">Actions</div>
+      <div class="btnRow">
+        <button id="btnYear" class="primary">Age +1 Year</button>
+        <button id="btnStudy" class="ghost">Study</button>
+        <button id="btnWork" class="ghost">Work Extra</button>
+        <button id="btnElection" class="ghost">Run Election</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="cardTitle small">Jobs (India)</div>
+      <div id="jobs" class="chips"></div>
+    </section>
+
+    <section class="card" id="presidentPanel">
+      <div class="cardTitle">President Controls</div>
+      <div class="grid2">
+        <div class="statline"><span>Treasury</span><strong id="treasury"></strong></div>
+        <div class="statline"><span>Military Strength</span><strong id="mil"></strong></div>
+        <div class="statline"><span>Tax Rate</span><strong id="taxRate"></strong></div>
+        <div class="statline"><span>Inventory</span><strong id="invShort"></strong></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <label class="label">Tax</label>
+        <input id="taxSlider" type="range" min="5" max="45" step="1" />
+        <button id="btnTax" class="ghost">Apply</button>
+      </div>
+
+      <div class="btnRow">
+        <button id="btnBribe" class="ghost danger">Take Bribe</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="cardTitle small">Buy Army Supplies</div>
+      <div class="row">
+        <select id="supplyType" class="input"></select>
+        <input id="supplyUnits" class="input" type="number" min="1" max="50" value="1" />
+        <button id="btnBuy" class="primary">Buy</button>
+      </div>
+
+      <div id="inventory" class="smallText"></div>
+    </section>
+
+    <section class="card">
+      <div class="cardTitle">Countries</div>
+      <div id="countries" class="countries"></div>
+    </section>
+
+    <section class="card">
+      <div class="cardTitle">Life Log</div>
+      <div id="log" class="log"></div>
+    </section>
+
+    <footer class="foot">
+      iPhone: Safari → Share → <strong>Add to Home Screen</strong>.
+      <br/>Tip: open it from Home Screen for full-screen “app” mode.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+    }
+  </script>
+</body>
+</html>
